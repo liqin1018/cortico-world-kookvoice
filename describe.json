@@ -1,0 +1,106 @@
+{
+  "tools": [
+    {
+      "name": "kook_voice_status",
+      "description": "看自己现在在不在 KOOK 语音频道里、在哪个频道、用的什么音色，以及有没有出过错。被问到「你在语音里吗」「听得见吗」时先看这个。",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "tags": [
+        "read"
+      ],
+      "summary": {
+        "zh": "看语音连接状态、所在频道和音色。",
+        "en": "Reads voice connection status, current channel and voice preset."
+      }
+    },
+    {
+      "name": "kook_voice_join",
+      "description": "进入 KOOK 语音频道开始听和说。已经在里面就直接返回当前状态。",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "tags": [
+        "write"
+      ],
+      "summary": {
+        "zh": "进语音频道，开始听人说话。",
+        "en": "Join the voice channel and start listening."
+      }
+    },
+    {
+      "name": "kook_speak",
+      "description": "在 KOOK 语音频道里开口说话。文字会被合成成你的声音播出去，频道里的人直接听见。只有在语音频道里时才有效。不想说话就不要调这个工具。",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "要说出口的话。1~3 句，纯口语，不要 markdown、不要括号里的动作描写（会被一起念出来）"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "tags": [
+        "write"
+      ],
+      "summary": {
+        "zh": "在语音频道里说出来。",
+        "en": "Say it out loud in the voice channel."
+      }
+    },
+    {
+      "name": "kook_voice_leave",
+      "description": "退出 KOOK 语音频道，把耳朵和嘴都关掉。",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "tags": [
+        "write"
+      ],
+      "summary": {
+        "zh": "退出语音频道。",
+        "en": "Leave the voice channel."
+      }
+    }
+  ],
+  "events": [
+    {
+      "type": "kookvoice.heard",
+      "description": {
+        "zh": "KOOK 语音频道里有人说了一句话。正文是识别出来的原话，可能带口误。要回应就调用 kook_speak，不想理就不调。",
+        "en": "Someone said something in the KOOK voice channel. The body is the raw transcript. Call kook_speak to answer, or don't."
+      }
+    },
+    {
+      "type": "kook_voice_joined",
+      "description": {
+        "zh": "进了语音频道，开始听得见大家说话。",
+        "en": "Joined the voice channel and started listening."
+      }
+    },
+    {
+      "type": "kook_voice_left",
+      "description": {
+        "zh": "退出了语音频道。",
+        "en": "Left the voice channel."
+      }
+    },
+    {
+      "type": "kook_voice_failed",
+      "description": {
+        "zh": "语音链路出错了（连不上、嗓子没开、设备不对之类）。",
+        "en": "The voice pipeline failed (connection, TTS, or device problem)."
+      }
+    }
+  ]
+}

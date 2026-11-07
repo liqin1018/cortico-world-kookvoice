@@ -1,0 +1,38 @@
+{
+  "_comment": "voiceChannelId = where Coo speaks. textChannelIds empty = ONLY the voice channel's own chat box (the panel on the right in KOOK). Fill ids to also listen to other text channels. textReplyMode: verbatim (read the message aloud) or brain (let Coo answer it).",
+  "voiceChannelId": "6939628499949215",
+  "textChannelIds": [],
+  "onlyMention": false,
+  "speakSpeakerName": false,
+  "maxChars": 160,
+  "interrupt": false,
+  "textReplyMode": "verbatim",
+
+  "ear": {
+    "_comment": "replyMode: name = only answer when called by alias, always = answer everything, off = just print. device = KOOK's OUTPUT device (loopback). monitor = ALSO play her voice on this PC - only for debugging when KOOK's own playback is unavailable; leaving it on causes double playback / echo.",
+    "enabled": true,
+    "_device_note": "留空 = 采集所有环回并混音（哪路在出声就采哪路，中途换 KOOK 输出设备不用改配置）。填设备名子串则只采那一路，例如 'MCHOSE'。",
+    "device": "",
+    "_mic_note": "留空 = 用 Windows 默认麦克风（KOOK 里也选 Default 就永远对得上）。填名字子串则只采那一个，例如 'MCHOSE'。",
+    "mic": "",
+    "probeSeconds": 6,
+    "monitor": false,
+    "monitorDevice": "G3Q",
+    "monitorVolume": 0.9,
+    "replyMode": "always",
+    "aliases": ["coo", "cou", "可可", "扣扣", "小扣", "酷酷"],
+    "cooldownMs": 4000
+  },
+
+  "brain": {
+    "_comment": "apigoto 中转站，可用模型只有 deepseek-flash。它默认会先输出 reasoning_content，把 max_tokens 烧光后 content 就是空的（表现为「等很久然后没声」），所以 disableThinking 必须开。实测关掉后 reasoning=0、首字约 0.7s。",
+    "provider": "apigoto",
+    "providersRoot": "F:\\Coopanion\\data\\home\\providers",
+    "model": "deepseek-flash",
+    "disableThinking": true,
+    "personaFile": "F:\\Coopanion\\data\\home\\companion\\workspace\\CONSTITUTION.md",
+    "firstTokenTimeoutMs": 6000,
+    "maxTokens": 800,
+    "temperature": 0.85
+  }
+}

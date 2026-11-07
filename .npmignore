@@ -1,0 +1,7 @@
+# 绝不打包的东西
+engine/p0/token.txt
+engine/p0/bin/
+engine/p2/models/
+engine/.download/
+*.log
+src/_*.mjs

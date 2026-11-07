@@ -1,0 +1,63 @@
+{
+  "name": "cortico-world-kookvoice",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "让 Coopanion 的桌宠进 KOOK 语音频道：听得见频道里的说话声，被叫到就接话，用自己的声音说出来。",
+  "license": "MIT",
+  "keywords": [
+    "cortico-world",
+    "cortico",
+    "coopanion",
+    "kook",
+    "voice",
+    "desktop-pet"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "os": [
+    "win32"
+  ],
+  "main": "./src/index.js",
+  "cortico": {
+    "kind": "world",
+    "api": 6,
+    "displayName": "KOOK 语音",
+    "describe": "describe.json",
+    "icon": "assets/icon.svg",
+    "webUiClient": "webui/client.js",
+    "tags": [
+      "voice",
+      "kook",
+      "social"
+    ],
+    "locales": {
+      "zh": {
+        "displayName": "KOOK 语音",
+        "description": "让桌宠真正进到 KOOK 的语音频道里：耳朵听频道里的说话声（系统环回 + 麦克风混音 → VAD → 本地识别），被叫到就用自己配的音色接话，声音走 KOOK 推流。文字也能触发——在语音频道自带的聊天框里打字，她会原样念出来。\n\n引擎是独立的一套程序（Node + Python + GPT-SoVITS），本插件只负责启动、停止和显示状态，不重复造一份。"
+      },
+      "en": {
+        "displayName": "KOOK Voice",
+        "description": "Puts the desktop pet into a real KOOK voice channel: her ears are a loopback + microphone mix (VAD → local ASR), and she answers in her own GPT-SoVITS voice pushed as RTP. Typing in the voice channel's own chat box also works — she reads it aloud.\n\nThe engine is a separate program (Node + Python + GPT-SoVITS); this world only starts, stops and reports its status."
+      }
+    }
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "files": [
+    "src/**",
+    "webui/**",
+    "engine/p0/*.mjs",
+    "engine/p1/*.mjs",
+    "engine/p1/*.json",
+    "engine/p2/*.py",
+    "engine/p2/*.mjs",
+    "engine/p2/*.txt",
+    "describe.json",
+    "THIRD-PARTY.md",
+    "LICENSE",
+    "README.md",
+    "docs/**"
+  ]
+}

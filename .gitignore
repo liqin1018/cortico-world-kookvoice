@@ -1,0 +1,21 @@
+# 引擎里的大件（由「下载依赖」获取，不进仓库）
+engine/p0/bin/
+engine/p2/models/
+engine/.download/
+
+# 令牌：绝对不能进仓库
+engine/p0/token.txt
+token.txt
+
+# 日志和临时文件
+*.log
+p1/logs/
+*.wav
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+
+# 依赖
+node_modules/

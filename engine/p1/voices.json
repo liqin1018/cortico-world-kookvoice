@@ -1,0 +1,31 @@
+{
+  "_comment": "音色库。current = 现在用哪个。切换：node voice.mjs use <id>（会自动写回本文件）。promptText 必须和参考音频的真实内容一致，差一个字合成就会崩（会出来零点几秒的碎片）。改完记得重启 bridge。",
+  "current": "qiong",
+
+  "list": [
+    {
+      "id": "qiong",
+      "name": "穹",
+      "refAudio": "F:/GPT-SOVITS-v5/1/audio.wav",
+      "promptText": "今天天气不错，我们出去走走吧，顺便买点水果回来，晚上一起吃。",
+      "promptLang": "zh",
+      "note": "Coopanion 插件里标「使用中」的那个，默认"
+    },
+    {
+      "id": "qiong-zh",
+      "name": "穹·中文版",
+      "refAudio": "F:/Coopanion/data/home/companion/data/gpt-sovits/voices/cv-zhcn-qiong01.wav",
+      "promptText": "你回来了，今天过得怎么样？晚饭已经做好了，在锅里热着呢。",
+      "promptLang": "zh",
+      "note": "标准普通话腔，语速略快"
+    },
+    {
+      "id": "qiong-ja",
+      "name": "穹·日语版",
+      "refAudio": "F:/Coopanion/data/home/companion/data/gpt-sovits/voices/cv-mvwg511x-99im.wav",
+      "promptText": "だから子供扱いしないでよ それぐらい持ってるから。",
+      "promptLang": "ja",
+      "note": "参考样本是日语，念中文会带日语腔、语速偏慢（4.8s vs 2.6s）"
+    }
+  ]
+}

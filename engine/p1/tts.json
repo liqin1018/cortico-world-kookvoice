@@ -1,0 +1,25 @@
+{
+  "_comment": "Coo 的嗓子。由 p1/start-tts.bat 起的 GPT-SoVITS 服务提供；本文件告诉 bridge 怎么调它、用哪个音色。",
+
+  "_url_comment": "我们自己起的服务在 9881，避开 Coopanion 插件占用的 9880，两者互不打扰",
+  "url": "http://127.0.0.1:9881/tts",
+
+  "_style_comment": "api_v2 = 标准 GPT-SoVITS 接口（带参考音频/文本）；coopanion = 桌宠插件的简化接口（只传 text，语言只能用插件配置里的）",
+  "style": "api_v2",
+
+  "_lang_comment": "textLang 必须 zh。曾经照抄 Coopanion 插件的 ja，结果整条链路崩：中文被当日语念 → 对方/自己听到的是日语腔 → 本地 ASR 识别成假名 → 大脑以为在说日语 → 回一段日语 → 越滚越远。音色由 refAudio 决定，和语言无关，改 zh 不会变成别人",
+  "textLang": "zh",
+  "promptLang": "zh",
+
+  "_voice_comment": "音色必须和 Coopanion 插件里「穹」这个预设完全一致：audio=F:/GPT-SOVITS-v5/1/audio.wav，text 见下。曾经用 voices/cv-zhcn-qiong01.wav 顶替，出来的是另一个人的声音。promptText 要先用 p2/ear.py --file 反向识别核对",
+  "refAudio": "F:/GPT-SOVITS-v5/1/audio.wav",
+  "promptText": "今天天气不错，我们出去走走吧，顺便买点水果回来，晚上一起吃。",
+
+  "speed": 1.0,
+
+  "_rhythm_comment": "fragmentInterval 是切句后每段之间插的静音秒数。默认 0.3 会让逗号处一顿一顿的，0.1 更自然",
+  "fragmentInterval": 0.1,
+  "parallelInfer": false,
+
+  "timeoutMs": 180000
+}
